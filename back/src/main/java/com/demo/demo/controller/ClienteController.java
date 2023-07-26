@@ -52,16 +52,17 @@ public class ClienteController {
    
 
         Cliente clienteNew = null;
+        
 
         Map<String, Object> response = new HashMap<>();
 
         if (result.hasErrors()) {
-            List<String> errors = result.getFieldErrors()
+           List<String>  errors = result.getFieldErrors()
                     .stream()
                     .map(err -> "El campo " + err.getField() + " " + err.getDefaultMessage())
                     .collect(Collectors.toList());
 
-            response.put("erros", errors);
+            response.put("errors", errors);
             return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
 
         }
@@ -71,6 +72,7 @@ public class ClienteController {
             clienteNew = clienteService.save(cliente);
 
         } catch (DataAccessException e) {
+            
             response.put("mensaje", "Error al realizar el insert en la base de datos");
             response.put("error", e.getMessage().concat(e.getMostSpecificCause().getMessage()));
             return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -96,7 +98,7 @@ public class ClienteController {
                     .map(err -> "El campo " + err.getField() + " " + err.getDefaultMessage())
                     .collect(Collectors.toList());
 
-            response.put("erros", errors);
+            response.put("errors", errors);
             return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
 
         }
@@ -138,7 +140,7 @@ public class ClienteController {
 
         }catch(DataAccessException e){
           response.put("mensaje","Error al eliminar el cliente de la base de datos");
-          response.put("error",e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+          response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
           return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);         
 
         }
