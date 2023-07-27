@@ -115,6 +115,7 @@ public class ClienteController {
             currentCliente.setNombre(cliente.getNombre());
             currentCliente.setApellido(cliente.getApellido());
             currentCliente.setEmail(cliente.getEmail());
+            currentCliente.setCreateAt(cliente.getCreateAt());
             clienteUpdate = this.clienteService.save(currentCliente);
 
         } catch (DataAccessException e) {

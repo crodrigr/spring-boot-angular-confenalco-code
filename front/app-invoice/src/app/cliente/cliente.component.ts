@@ -34,4 +34,14 @@ export class ClienteComponent implements OnInit {
 
   }
 
+  delete(cliente: Cliente): void{
+   if(cliente.id!=undefined){
+    this.clienteService.delete(cliente.id).subscribe({
+      next: ()=>{
+        this.clientes = this.clientes.filter(cli=>cli!==cliente)
+      }
+    })
+  }  
+ }
+
 }
