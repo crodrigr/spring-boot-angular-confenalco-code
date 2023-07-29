@@ -44,7 +44,7 @@ public class FacturaController {
         clienteService.deleteFactura(id);        
     }
 
-    @GetMapping("/facturas/filtra-productos/{term}")
+    @GetMapping("/facturas/filtrar-productos/{term}")
     @ResponseStatus(HttpStatus.OK)
     public List<Producto> filtrarProductos(@PathVariable String term){
         return clienteService.findProductoByNombre(term);

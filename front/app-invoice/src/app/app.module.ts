@@ -12,7 +12,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatNativeDateModule} from '@angular/material/core';
+import {MatMomentDateModule} from '@angular/material-moment-adapter';
+import { FacturaComponent } from './facturas/factura.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     AppComponent,
     HeaderComponent,
     ClienteComponent,
-    FormComponent
+    FormComponent,
+    FacturaComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatDatepickerModule,
     MatInputModule,
     MatFormFieldModule,
-    MatNativeDateModule
+    MatMomentDateModule,
+    MatAutocompleteModule
     
   ],
   providers: [],
