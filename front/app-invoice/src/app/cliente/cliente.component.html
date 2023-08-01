@@ -1,3 +1,8 @@
+<app-detalle 
+ [cliente]="clienteSeleccionado"
+ *ngIf="clienteSeleccionado">
+</app-detalle>
+
 <div class="card border-primary mb3">
    <div class="card-header">Clientes</div>
    <div class="card-body text-primary">
@@ -24,7 +29,7 @@
          </thead>
          <tbody>
             <tr *ngFor="let cliente of clientes">
-               <td><button type="button" class="btn btn-info">Ver</button></td>
+               <td><button type="button" class="btn btn-info" (click)="abrilModal(cliente)">Ver</button></td>
                <td>{{cliente.id}}</td>
                <td>{{cliente.nombre}}</td>
                <td>{{cliente.apellido}}</td>

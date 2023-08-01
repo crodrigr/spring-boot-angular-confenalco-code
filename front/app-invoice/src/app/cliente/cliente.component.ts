@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from '../cliente/cliente';
 import { ClienteService } from './cliente.service';
+import { Router } from '@angular/router';
+import { ModalService } from './detalle/modal.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cliente',
@@ -11,8 +14,12 @@ export class ClienteComponent implements OnInit {
 
   title: string='Cliente';
   clientes: Cliente[]=[];
+  clienteSeleccionado: Cliente;
+  
 
-  constructor(private clienteService:ClienteService){
+  constructor(private clienteService:ClienteService,
+              private router:Router,
+              private modalService:ModalService){
 
   }
 
@@ -35,13 +42,37 @@ export class ClienteComponent implements OnInit {
   }
 
   delete(cliente: Cliente): void{
-   if(cliente.id!=undefined){
-    this.clienteService.delete(cliente.id).subscribe({
-      next: ()=>{
-        this.clientes = this.clientes.filter(cli=>cli!==cliente)
-      }
-    })
-  }  
+
+  Swal.fire({
+    title: 'Está seguro?',
+    text: `¿Seguro que desea eliminar el cliente: ${cliente.nombre} ${cliente.apellido}`,
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor:'#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Si, eliminar'
+  }).then((result)=>{
+    if(cliente.id!=undefined){
+      this.clienteService.delete(cliente.id).subscribe({
+        next: ()=>{
+          this.clientes = this.clientes.filter(cli=>cli!==cliente)
+          Swal.fire(
+            'Cliente Elminado',
+            `Cliente ${cliente.nombre} eliminado con éxito`,
+            'success'
+         )
+        }
+      })
+    } 
+
+  });  
  }
+
+ abrilModal(cliente: Cliente){
+   this.clienteSeleccionado=cliente;
+   this.modalService.abrirModal();
+ }
+
+
 
 }

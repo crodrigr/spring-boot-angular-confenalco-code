@@ -1,4 +1,5 @@
 import { Region } from "./region";
+import { Factura } from "../facturas/models/Factura";
 
 export interface Cliente{
   
@@ -7,7 +8,9 @@ export interface Cliente{
     apellido?: string;
     createAt?: string;
     email?: string;
-    region?: Region
+    region?: Region;
+    facturas?: Array<Factura>;
+
 
 
 }

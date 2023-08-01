@@ -15,6 +15,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatMomentDateModule} from '@angular/material-moment-adapter';
 import { FacturaComponent } from './facturas/factura.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { DetalleComponent } from './cliente/detalle/detalle.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     HeaderComponent,
     ClienteComponent,
     FormComponent,
-    FacturaComponent
+    FacturaComponent,
+    DetalleComponent
   ],
   imports: [
     BrowserModule,
