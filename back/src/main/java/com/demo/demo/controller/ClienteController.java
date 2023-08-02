@@ -26,7 +26,7 @@ import com.demo.demo.services.ClienteService;
 
 import jakarta.validation.Valid;
 
-@CrossOrigin(origins={"http://localhost:80"})
+@CrossOrigin(origins={"http://localhost:80","*"})
 @RestController
 @RequestMapping("/api")
 public class ClienteController {

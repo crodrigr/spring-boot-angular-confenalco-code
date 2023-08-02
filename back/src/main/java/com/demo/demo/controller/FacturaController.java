@@ -18,7 +18,7 @@ import com.demo.demo.repository.entities.Factura;
 import com.demo.demo.repository.entities.Producto;
 import com.demo.demo.services.ClienteService;
 
-@CrossOrigin(origins={"http://localhost:80"})
+@CrossOrigin(origins={"http://localhost:80","*"})
 @RestController
 @RequestMapping("/api")
 public class FacturaController {
