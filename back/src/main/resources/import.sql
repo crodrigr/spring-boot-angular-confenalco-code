@@ -35,8 +35,8 @@ INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES(1,1,7);
 INSERT INTO facturas (descripcion, observacion, cliente_id, create_at) VALUES("Factura Bicicleta","Alguna nota importante",1,NOW());
 INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES(3,2,6);
 
-INSERT INTO usuarios (username,password,enabled,nombre,apellido,email) VALUES ("camilo","123456",true,"Camilo","Rodriguez","cerodriguez@gamil.com");
-INSERT INTO usuarios (username,password,enabled,nombre,apellido,email) VALUES ("admin","123456",true,"Admin","Root","admin@gamil.com");
+INSERT INTO usuarios (username,password,enabled,nombre,apellido,email) VALUES ("camilo","$2a$10$jNFVzVbRZwMrxAa7W0iYV.Y71NU2n4KZ7VE2GU2MOauu7WngCeDSe",true,"Camilo","Rodriguez","cerodriguez@gamil.com");
+INSERT INTO usuarios (username,password,enabled,nombre,apellido,email) VALUES ("admin","$2a$10$RxngK./MqZHdeDn/rFZZk.1OlEDRi1czuvojQ20kVD0047G/WQPJu",true,"Admin","Root","admin@gamil.com");
 
 
 INSERT INTO roles (nombre) VALUES("ROLE_USER");

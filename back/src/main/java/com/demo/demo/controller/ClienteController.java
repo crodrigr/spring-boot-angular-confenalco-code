@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,7 +25,7 @@ import com.demo.demo.repository.entities.Cliente;
 import com.demo.demo.repository.entities.Region;
 import com.demo.demo.services.ClienteService;
 
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 
 @CrossOrigin(origins={"http://localhost:80","*"})
 @RestController
@@ -34,18 +35,21 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
 
+    
     @GetMapping("/clientes")
     public List<Cliente> index() {
         System.out.println("Entro en /clientes");
         return clienteService.findAll();
     }
 
+    @Secured({"ROLE_ADMIN","ROLE_USER"})
     @GetMapping("/cliente/{id}")
     public Cliente show(@PathVariable Long id) {
         return clienteService.findById(id);
 
     }
 
+    @Secured({"ROLE_ADMIN"})
     @PostMapping("/clientes")
     public ResponseEntity<?> create(@Valid @RequestBody Cliente cliente, BindingResult result) {
 
@@ -84,6 +88,7 @@ public class ClienteController {
 
     }
 
+    @Secured({"ROLE_ADMIN"})
     @PutMapping("/cliente/{id}")
     public ResponseEntity<?> update(@Valid @RequestBody Cliente cliente, BindingResult result, @PathVariable Long id) {
 
@@ -130,6 +135,7 @@ public class ClienteController {
 
     }
 
+    @Secured({"ROLE_ADMIN"})
     @DeleteMapping("/cliente/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
        
@@ -151,6 +157,7 @@ public class ClienteController {
             
     }
 
+    @Secured({"ROLE_ADMIN"})
     @GetMapping("/clientes/regiones")
     public List<Region> listarRegiones(){
         return this.clienteService.findAllRegiones();
